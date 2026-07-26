@@ -21,8 +21,12 @@ export async function onRequestPost({ request, env }) {
     return json({ error: 'Bad request' }, 400);
   }
 
-  // Honeypot: real visitors never fill this field.
-  if (data.company) return json({ ok: true });
+  // Honeypot: real visitors never fill this field. Field name is deliberately
+  // meaningless so browser autofill never populates it.
+  if (data.botcheck) {
+    console.log('order dropped: honeypot filled');
+    return json({ ok: true });
+  }
 
   const name = String(data.name || '').trim().slice(0, 100);
   const phone = String(data.phone || '').trim().slice(0, 40);
@@ -120,7 +124,9 @@ export async function onRequestPost({ request, env }) {
   });
 
   if (!res.ok) {
+    console.log('resend error', res.status, await res.text().catch(() => ''));
     return json({ error: 'We could not send your order. Please call us instead.' }, 502);
   }
+  console.log('order sent:', item, qty, unit);
   return json({ ok: true });
 }

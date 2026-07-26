@@ -296,7 +296,7 @@
             <textarea name="note" rows="3"></textarea>
           </label>
           <label class="of-hp" aria-hidden="true">
-            Company <input type="text" name="company" tabindex="-1" autocomplete="off">
+            Leave this empty <input type="text" name="botcheck" tabindex="-1" autocomplete="off">
           </label>
           <div class="of-actions">
             <button class="mkg-btn" type="submit" id="order-send">Send order</button>
@@ -444,7 +444,7 @@
             item: f.get('item'),
             qty: f.get('qty'),
             note: f.get('note'),
-            company: f.get('company')
+            botcheck: f.get('botcheck')
           })
         });
         if (!res.ok) throw new Error((await res.json().catch(() => ({}))).error || 'send failed');
