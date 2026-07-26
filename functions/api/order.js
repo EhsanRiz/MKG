@@ -32,6 +32,8 @@ export async function onRequestPost({ request, env }) {
   const phone = String(data.phone || '').trim().slice(0, 40);
   const item = String(data.item || '').trim().slice(0, 80);
   const qty = String(data.qty || '').trim().slice(0, 10);
+  const email = String(data.email || '').trim().slice(0, 200);
+  const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? email : '';
   const address = String(data.address || '').trim().slice(0, 300);
   const note = String(data.note || '').trim().slice(0, 1000);
   const unit = item.startsWith('Eggs') ? 'trays' : 'bags';
@@ -78,6 +80,7 @@ export async function onRequestPost({ request, env }) {
           ${row('Order', `${esc(item)} &mdash; <span style="color:#7d5411;">${esc(qty)} ${unit}</span>`, true)}
           ${row('Name', esc(name))}
           ${row('Phone', `<a href="tel:${esc(phone.replace(/[^+\d]/g, ''))}" style="color:#7d5411;">${esc(phone)}</a>`)}
+          ${validEmail ? row('Email', `<a href="mailto:${esc(validEmail)}" style="color:#7d5411;">${esc(validEmail)}</a>`) : ''}
           ${address ? row('Address', esc(address)) : ''}
           ${note ? row('Note', esc(note)) : ''}
         </table>
@@ -107,6 +110,7 @@ export async function onRequestPost({ request, env }) {
     `Order: ${item} — ${qty} ${unit}`,
     `Name:    ${name}`,
     `Phone:   ${phone}`,
+    validEmail ? `Email:   ${validEmail}` : '',
     address ? `Address: ${address}` : '',
     note ? `Note:    ${note}` : '',
   ].filter(Boolean).join('\n');
@@ -120,6 +124,7 @@ export async function onRequestPost({ request, env }) {
     body: JSON.stringify({
       from: FROM,
       to: RECIPIENTS,
+      ...(validEmail ? { reply_to: validEmail } : {}),
       subject: `🥚 Order: ${item} — ${qty} ${unit} — ${name}`,
       html,
       text,

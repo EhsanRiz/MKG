@@ -291,10 +291,16 @@
               </span>
             </label>
           </div>
-          <label class="of-field">
-            <span>Delivery address</span>
-            <input type="text" name="address" autocomplete="street-address" placeholder="Village / town and nearest landmark">
-          </label>
+          <div class="of-row">
+            <label class="of-field">
+              <span>Your email <em>(optional)</em></span>
+              <input type="email" name="email" autocomplete="email">
+            </label>
+            <label class="of-field">
+              <span>Delivery address</span>
+              <input type="text" name="address" autocomplete="street-address" placeholder="Village / town and nearest landmark">
+            </label>
+          </div>
           <label class="of-field">
             <span>Anything else we should know? <em>(optional)</em></span>
             <textarea name="note" rows="2"></textarea>
@@ -447,6 +453,7 @@
             phone: f.get('phone'),
             item: f.get('item'),
             qty: f.get('qty'),
+            email: f.get('email'),
             address: f.get('address'),
             note: f.get('note'),
             botcheck: f.get('botcheck')
