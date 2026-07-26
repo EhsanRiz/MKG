@@ -115,9 +115,9 @@
             </div>
             <h3>Sizes &amp; grades</h3>
             <p>
-              Sorted into consistent sizes — small, medium, large and jumbo — so
-              you know exactly what you are getting, whether it is a dozen for home
-              or a bulk order for the kitchen.
+              Sorted into consistent sizes — small, medium, large and jumbo — and
+              sold by the tray of 30, so you know exactly what you are getting,
+              from one tray for home to a bulk order for the kitchen.
             </p>
           </article>
 
@@ -203,9 +203,9 @@
             </div>
             <h3>Supply</h3>
             <p>
-              Scientifically formulated iTau feed for layers, broilers, pigs, sheep
-              and cattle — brought up the mountain so highland farmers pay a fair
-              price, from our depot at the farm.
+              Scientifically formulated iTau feed in 50&nbsp;kg bags — layer,
+              broiler and pig feed stocked at our depot, with the wider iTau range
+              to order — so highland farmers pay a fair price.
             </p>
           </article>
 
@@ -250,8 +250,9 @@
           <p class="section-eyebrow">Order Online</p>
           <h2>Place your order here.</h2>
           <p>
-            Fill this in and press send — your order opens in WhatsApp, ready to go
-            to the farm. We confirm price and collection or delivery by reply.
+            Eggs by the tray, and iTau feed by the 50&nbsp;kg bag. Fill this in and
+            press send — your order opens in WhatsApp, ready to go to the farm. We
+            confirm price and collection or delivery by reply.
           </p>
         </div>
 
@@ -270,15 +271,21 @@
             <label class="of-field">
               <span>What would you like?</span>
               <select name="item">
-                <option>Eggs — trays of 30</option>
-                <option>Eggs — dozens</option>
-                <option>Eggs — bulk / wholesale</option>
-                <option>FEPA feed enquiry</option>
+                <optgroup label="Eggs">
+                  <option>Eggs — tray of 30</option>
+                </optgroup>
+                <optgroup label="iTau feed — 50 kg bags">
+                  <option>Feed — Complete Lay Ph.2 (layers)</option>
+                  <option>Feed — Broiler Grower</option>
+                  <option>Feed — Broiler Finisher</option>
+                  <option>Feed — Pig Grower</option>
+                  <option>Feed — Pig Finisher</option>
+                </optgroup>
               </select>
             </label>
             <label class="of-field of-qty">
               <span>How many</span>
-              <input type="text" name="qty" placeholder="e.g. 4 trays" required>
+              <input type="text" name="qty" placeholder="e.g. 4 trays or 10 bags" required>
             </label>
           </div>
           <label class="of-field">
@@ -348,7 +355,7 @@
           <div class="contact-cta">
             <h3>Order fresh eggs</h3>
             <p>
-              Tell us what you need — a few dozen for the house or a standing order
+              Tell us what you need — a few trays for the house or a standing order
               for your business — and we will sort out delivery. The quickest way
               to reach us is WhatsApp.
             </p>
@@ -415,8 +422,9 @@
       if (!orderForm.reportValidity()) return;
       window.open('https://wa.me/26662889999?text=' + encodeURIComponent(orderText()), '_blank', 'noopener');
     });
-    document.getElementById('order-mail').addEventListener('click', function () {
-      this.href = 'mailto:phakisi@mkgeggs.com?subject=' + encodeURIComponent('Egg order — mkgeggs.com')
+    document.getElementById('order-mail').addEventListener('click', function (e) {
+      if (!orderForm.reportValidity()) { e.preventDefault(); return; }
+      this.href = 'mailto:phakisi@mkgeggs.com?subject=' + encodeURIComponent('Order — mkgeggs.com')
         + '&body=' + encodeURIComponent(orderText());
     });
     // Subtle header shadow on scroll
