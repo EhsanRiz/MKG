@@ -85,3 +85,25 @@ Contact details are live in `index.html`: Thabiso Phakisi, WhatsApp/phone
   `+266 6288 9999` (email fallback to `phakisi@mkgeggs.com`) — no backend needed.
 
 That's it. Push, connect, point the domains — you're live.
+
+---
+
+## Order emails (Resend)
+
+The order form POSTs to `/api/order` (a Pages Function in `functions/api/order.js`),
+which emails the order to **ehsan@mkgeggs.com** and **phakisi@mkgeggs.com** via
+[Resend](https://resend.com). One-time setup:
+
+1. **API key** — Pages project → **Settings → Environment variables** →
+   Add variable for **Production** (and Preview if you like):
+   name `RESEND_API_KEY`, value = your Resend API key, type **Secret**.
+   Then **redeploy** (Deployments → ⋯ → Retry deployment) so the function picks it up.
+2. **Verify the sending domain** — Resend dashboard → **Domains → Add domain** →
+   `mkgeggs.com`. Resend shows DKIM/SPF DNS records; add them in Cloudflare →
+   `mkgeggs.com` zone → DNS (DNS-only, not proxied). Until the domain is verified,
+   Resend rejects mail from `orders@mkgeggs.com`.
+3. The recipient inboxes must exist — set up `ehsan@` and `phakisi@` in Zoho Mail
+   (see the MX records above).
+
+Never commit the API key to the repo — it lives only in the Pages environment
+variable.

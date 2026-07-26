@@ -191,7 +191,16 @@ img, svg { display: block; max-width: 100%; height: auto; }
   font-size: 0.95rem; color: var(--mkg-neutral-600); pointer-events: none;
 }
 .of-actions { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; margin-top: 6px; }
-.of-mail { font-size: 0.95rem; }
+.of-status { margin: 0; font-size: 0.95rem; color: var(--mkg-gold-800); }
+.of-hp { position: absolute; left: -9999px; top: -9999px; }
+.mkg-btn:disabled { opacity: 0.6; cursor: default; }
+.order-done {
+  max-width: 760px; background: var(--mkg-neutral-100);
+  border: 1px solid var(--mkg-gold-300); border-left: 4px solid var(--mkg-gold);
+  border-radius: var(--mkg-radius); padding: 34px 36px;
+}
+.order-done h3 { font-size: 1.8rem; margin: 0 0 10px; }
+.order-done p { margin: 0; }
 
 /* ─────────────  CONTACT  ───────────── */
 .contact-grid {

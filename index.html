@@ -251,8 +251,8 @@
           <h2>Place your order here.</h2>
           <p>
             Eggs by the tray, and iTau feed by the 50&nbsp;kg bag. Fill this in and
-            press send — your order opens in WhatsApp, ready to go to the farm. We
-            confirm price and collection or delivery by reply.
+            press send — your order goes straight to the farm, and we call you
+            back to confirm the price and collection or delivery.
           </p>
         </div>
 
@@ -295,11 +295,20 @@
             <span>Where are you, and anything else we should know? <em>(optional)</em></span>
             <textarea name="note" rows="3"></textarea>
           </label>
+          <label class="of-hp" aria-hidden="true">
+            Company <input type="text" name="company" tabindex="-1" autocomplete="off">
+          </label>
           <div class="of-actions">
-            <button class="mkg-btn" type="submit">Send order on WhatsApp</button>
-            <a class="of-mail" id="order-mail" href="mailto:phakisi@mkgeggs.com">or email your order</a>
+            <button class="mkg-btn" type="submit" id="order-send">Send order</button>
+            <p class="of-status" id="order-status" role="status"></p>
           </div>
         </form>
+
+        <div class="order-done" id="order-done" hidden>
+          <h3>Kea leboha — order received!</h3>
+          <p>Your order is on its way to the farm. We will call you back shortly
+             to confirm the price and arrange collection or delivery.</p>
+        </div>
       </div>
     </section>
 
@@ -416,25 +425,36 @@
     const updateUnit = () => { qtyUnit.textContent = orderUnit(); };
     itemSelect.addEventListener('change', updateUnit);
     updateUnit();
-    const orderText = () => {
-      const f = new FormData(orderForm);
-      return [
-        'Lumela MKG! New order from mkgeggs.com',
-        'Name: ' + f.get('name'),
-        'Phone: ' + f.get('phone'),
-        'Order: ' + f.get('item') + ' — ' + f.get('qty') + ' ' + orderUnit(),
-        f.get('note') ? 'Note: ' + f.get('note') : ''
-      ].filter(Boolean).join('\n');
-    };
-    orderForm.addEventListener('submit', e => {
+    const sendBtn = document.getElementById('order-send');
+    const statusEl = document.getElementById('order-status');
+    orderForm.addEventListener('submit', async e => {
       e.preventDefault();
       if (!orderForm.reportValidity()) return;
-      window.open('https://wa.me/26662889999?text=' + encodeURIComponent(orderText()), '_blank', 'noopener');
-    });
-    document.getElementById('order-mail').addEventListener('click', function (e) {
-      if (!orderForm.reportValidity()) { e.preventDefault(); return; }
-      this.href = 'mailto:phakisi@mkgeggs.com?subject=' + encodeURIComponent('Order — mkgeggs.com')
-        + '&body=' + encodeURIComponent(orderText());
+      const f = new FormData(orderForm);
+      sendBtn.disabled = true;
+      sendBtn.textContent = 'Sending…';
+      statusEl.textContent = '';
+      try {
+        const res = await fetch('/api/order', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({
+            name: f.get('name'),
+            phone: f.get('phone'),
+            item: f.get('item'),
+            qty: f.get('qty'),
+            note: f.get('note'),
+            company: f.get('company')
+          })
+        });
+        if (!res.ok) throw new Error((await res.json().catch(() => ({}))).error || 'send failed');
+        orderForm.hidden = true;
+        document.getElementById('order-done').hidden = false;
+      } catch (err) {
+        statusEl.textContent = 'Sorry — your order could not be sent. Please call us on +266 6288 9999.';
+        sendBtn.disabled = false;
+        sendBtn.textContent = 'Send order';
+      }
     });
     // Subtle header shadow on scroll
     const header = document.querySelector('.site-header');
