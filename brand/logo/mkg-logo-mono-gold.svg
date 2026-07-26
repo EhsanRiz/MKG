@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 340" width="320" height="340" role="img" aria-label="MKG Egg Farm">
+  <title>MKG Egg Farm</title>
+  
+  <defs>
+    <mask id="brk-g" maskUnits="userSpaceOnUse" x="0" y="0" width="320" height="340">
+      <rect x="0" y="0" width="320" height="340" fill="#fff"></rect>
+      <rect x="-10" y="132" width="340" height="110" fill="#000"></rect>
+      
+    </mask>
+  </defs>
+  <g transform="translate(30 0)">
+    <path d="M130 4C182 4 252 92 252 196C252 274 197 332 130 332C63 332 8 274 8 196C8 92 78 4 130 4Z" fill="none" stroke="#7d5411" stroke-width="3" mask="url(#brk-g)"></path>
+  </g>
+  <text x="160" y="236" text-anchor="middle" fill="#7d5411" font-family="Cormorant Garamond, Garamond, serif" font-weight="400" font-size="140" letter-spacing="2.8">MKG</text>
+  <text x="160" y="276" text-anchor="middle" fill="#7d5411" font-family="Lora, Georgia, serif" font-size="12" letter-spacing="3.1">EGG FARM</text>
+  <text x="160" y="298" text-anchor="middle" fill="#7d5411" font-family="Lora, Georgia, serif" font-size="9" letter-spacing="1.8">MOKHOTLONG · LESOTHO</text>
+</svg>

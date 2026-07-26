@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 444" width="320" height="444" role="img" aria-label="MKG Egg Farm">
+  <title>MKG Egg Farm</title>
+  
+  <defs>
+    <mask id="brk-h" maskUnits="userSpaceOnUse" x="0" y="0" width="320" height="444">
+      <rect x="0" y="0" width="320" height="444" fill="#fff"></rect>
+      <rect x="-10" y="236" width="340" height="110" fill="#000"></rect>
+      <rect x="96" y="82" width="128" height="34" fill="#000"></rect>
+    </mask>
+  </defs>
+  <g transform="translate(30 104)">
+    <path d="M130 4C182 4 252 92 252 196C252 274 197 332 130 332C63 332 8 274 8 196C8 92 78 4 130 4Z" fill="none" stroke="#b68235" stroke-width="3" mask="url(#brk-h)"></path>
+  </g>
+  <g transform="translate(88 -12) scale(1.2)" fill="#b68235" fill-rule="evenodd">
+    <path d="M4 30L16 24C16 17 20 10 24 16C26 9 31 9 33 16C36 12 42 13 42 20C46 26 46 32 46 38C58 35 70 37 80 46C86 34 96 20 108 12C100 24 96 32 95 40C104 42 110 46 114 54C108 62 104 70 98 78C86 88 56 92 34 86C24 82 20 74 20 64C20 52 18 44 17 38C17 36 16 35 16 34ZM29.6 25a2.6 2.6 0 11-5.2 0 2.6 2.6 0 015.2 0z"></path>
+  </g>
+  <text x="160" y="340" text-anchor="middle" fill="#201f1d" font-family="Cormorant Garamond, Garamond, serif" font-weight="400" font-size="140" letter-spacing="2.8">MKG</text>
+  <text x="160" y="380" text-anchor="middle" fill="#201f1d" font-family="Lora, Georgia, serif" font-size="12" letter-spacing="3.1">EGG FARM</text>
+  <text x="160" y="402" text-anchor="middle" fill="#b68235" font-family="Lora, Georgia, serif" font-size="9" letter-spacing="1.8">MOKHOTLONG · LESOTHO</text>
+</svg>

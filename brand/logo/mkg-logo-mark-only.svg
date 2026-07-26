@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 340" width="320" height="340" role="img" aria-label="MKG Egg Farm">
+  <title>MKG Egg Farm</title>
+  
+  <defs>
+    <mask id="brk-m" maskUnits="userSpaceOnUse" x="0" y="0" width="320" height="340">
+      <rect x="0" y="0" width="320" height="340" fill="#fff"></rect>
+      <rect x="-10" y="132" width="340" height="110" fill="#000"></rect>
+      
+    </mask>
+  </defs>
+  <g transform="translate(30 0)">
+    <path d="M130 4C182 4 252 92 252 196C252 274 197 332 130 332C63 332 8 274 8 196C8 92 78 4 130 4Z" fill="none" stroke="#b68235" stroke-width="3" mask="url(#brk-m)"></path>
+  </g>
+  <text x="160" y="236" text-anchor="middle" fill="#201f1d" font-family="Cormorant Garamond, Garamond, serif" font-weight="400" font-size="140" letter-spacing="2.8">MKG</text>
+  
+</svg>

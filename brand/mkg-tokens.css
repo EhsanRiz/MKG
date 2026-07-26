@@ -1,0 +1,82 @@
+/* MKG Egg Farm — brand tokens
+   Derived from the Classical design system. Drop this in and style against the
+   variables; do not hard-code hexes in components. */
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap");
+
+:root {
+  /* ── Core roles ────────────────────────────────── */
+  --mkg-bg:        #f3f2f2;  /* page ground */
+  --mkg-surface:   #eae9e9;  /* raised panel */
+  --mkg-ink:       #201f1d;  /* body + headings */
+  --mkg-gold:      #b68235;  /* the one accent — use as stroke, rule, underline */
+  --mkg-divider:   rgba(32, 31, 29, 0.16);
+
+  /* ── Neutral ramp ──────────────────────────────── */
+  --mkg-neutral-100: #f8f4f4;
+  --mkg-neutral-200: #eae7e7;
+  --mkg-neutral-300: #d7d3d3;
+  --mkg-neutral-400: #bab6b6;
+  --mkg-neutral-500: #9b9797;
+  --mkg-neutral-600: #7d7979;
+  --mkg-neutral-700: #605d5d;
+  --mkg-neutral-800: #444141;
+  --mkg-neutral-900: #2d2b2b;  /* dark sections, reversed logo ground */
+
+  /* ── Gold ramp ─────────────────────────────────── */
+  --mkg-gold-100: #fff3e4;
+  --mkg-gold-200: #ffe3bf;
+  --mkg-gold-300: #facb8d;
+  --mkg-gold-400: #e1ad66;  /* gold on dark grounds */
+  --mkg-gold-500: #c28d41;
+  --mkg-gold-600: #a06f24;  /* pressed / active */
+  --mkg-gold-700: #7d5411;  /* gold TEXT at paragraph size */
+  --mkg-gold-800: #5a3b0a;
+  --mkg-gold-900: #3a270d;
+
+  /* ── Type ──────────────────────────────────────── */
+  --mkg-font-display: "Cormorant Garamond", Garamond, serif;
+  --mkg-font-body:    "Lora", Georgia, serif;
+  --mkg-radius:       4px;
+
+  /* ── Elevation — a whisper, never a slab ───────── */
+  --mkg-shadow-sm: 0 1px 2px rgba(32, 31, 29, 0.06);
+  --mkg-shadow-md: 0 2px 8px rgba(32, 31, 29, 0.08);
+  --mkg-shadow-lg: 0 8px 28px rgba(32, 31, 29, 0.10);
+}
+
+body {
+  background: var(--mkg-bg);
+  color: var(--mkg-ink);
+  font-family: var(--mkg-font-body);
+  line-height: 1.7;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--mkg-font-display);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+a { color: var(--mkg-gold-700); text-decoration: none; border-bottom: 1px solid var(--mkg-gold-300); }
+a:hover { color: var(--mkg-gold-800); border-bottom-color: var(--mkg-gold-600); }
+
+/* Outlined button — never a solid gold fill */
+.mkg-btn {
+  font-family: var(--mkg-font-body);
+  font-size: 15px;
+  padding: 10px 22px;
+  border: 1px solid var(--mkg-gold);
+  border-radius: var(--mkg-radius);
+  background: transparent;
+  color: var(--mkg-gold-700);
+  cursor: pointer;
+  transition: background 120ms ease, border-color 120ms ease;
+}
+.mkg-btn:hover  { background: var(--mkg-gold-100); }
+.mkg-btn:active { border-color: var(--mkg-gold-600); background: var(--mkg-gold-200); }
+
+:focus-visible { outline: 2px solid var(--mkg-gold); outline-offset: 2px; }
+::selection { background: var(--mkg-gold-200); }
+
+.mkg-hr { border: 0; border-top: 1px solid var(--mkg-divider); margin: 2rem 0; }
