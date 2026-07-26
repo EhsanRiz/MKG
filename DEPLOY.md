@@ -70,17 +70,18 @@ address and avoids duplicate-content confusion.
 
 ---
 
-## Before you go live — swap the placeholders
+## Before you go live
 
-I drafted the copy from your brand; these bits are placeholders to replace in
-`index.html` (search for them):
+Contact details are live in `index.html`: Thabiso Phakisi, WhatsApp/phone
+`+266 6288 9999` (`wa.me/26662889999`), email `phakisi@mkgeggs.com`.
 
-- **WhatsApp / phone number:** every `26600000000` → your real number in full
-  international form, no `+`, spaces or dashes (e.g. Lesotho `266` + your number).
-  Appears in the `wa.me/…` links, the `tel:` link, and the visible `+266 0000 0000`.
-- **Email:** `hello@mkgeggs.com` → whatever address you'll actually check (you can
-  set this up as email forwarding in Cloudflare → Email Routing, free).
-- **Copy:** the story, product and farm text is well-crafted placeholder — tweak
-  any details (altitude, delivery area, flock size, etc.) to match reality.
+- **Email (Zoho Mail):** `phakisi@mkgeggs.com` is to be hosted on Zoho. Once the
+  `mkgeggs.com` zone is active in Cloudflare, add Zoho's MX records (`mx.zoho.com`,
+  `mx2.zoho.com`, `mx3.zoho.com` — priorities 10/20/50, DNS-only, not proxied) plus
+  Zoho's SPF/DKIM TXT records, then verify the domain in the Zoho Mail admin console.
+- **Copy check:** the altitude (2 300 m) and flock size (5 500) figures should match
+  reality before launch.
+- **Online orders:** the order form opens a pre-written WhatsApp message to
+  `+266 6288 9999` (email fallback to `phakisi@mkgeggs.com`) — no backend needed.
 
 That's it. Push, connect, point the domains — you're live.

@@ -161,6 +161,32 @@ img, svg { display: block; max-width: 100%; height: auto; }
 }
 .stat-label { font-size: 1rem; color: var(--mkg-neutral-300); line-height: 1.5; }
 
+/* ─────────────  ORDER FORM  ───────────── */
+.order-form {
+  max-width: 760px; background: var(--mkg-neutral-100);
+  border: 1px solid var(--mkg-divider); border-radius: var(--mkg-radius);
+  padding: 38px 36px; box-shadow: var(--mkg-shadow-sm);
+}
+.of-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.of-field { display: block; margin-bottom: 20px; }
+.of-field > span {
+  display: block; font-size: 0.9rem; font-weight: 600;
+  color: var(--mkg-neutral-800); margin-bottom: 7px; letter-spacing: 0.02em;
+}
+.of-field > span em { font-weight: 400; color: var(--mkg-neutral-600); }
+.of-field input, .of-field select, .of-field textarea {
+  width: 100%; font-family: var(--mkg-font-body); font-size: 1rem;
+  color: var(--mkg-ink); background: var(--mkg-bg);
+  border: 1px solid var(--mkg-neutral-400); border-radius: var(--mkg-radius);
+  padding: 11px 13px;
+}
+.of-field input:focus, .of-field select:focus, .of-field textarea:focus {
+  outline: 2px solid var(--mkg-gold); outline-offset: 0; border-color: var(--mkg-gold);
+}
+.of-field textarea { resize: vertical; }
+.of-actions { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; margin-top: 6px; }
+.of-mail { font-size: 0.95rem; }
+
 /* ─────────────  CONTACT  ───────────── */
 .contact-grid {
   display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
@@ -171,6 +197,7 @@ img, svg { display: block; max-width: 100%; height: auto; }
 }
 .contact-cta { background: var(--mkg-surface); display: flex; flex-direction: column; align-items: flex-start; }
 .contact-card h3, .contact-cta h3 { font-size: 1.7rem; margin: 0 0 24px; }
+.contact-person { font-size: 1.02rem; color: var(--mkg-neutral-800); margin: -14px 0 22px; }
 .contact-list { list-style: none; margin: 0; padding: 0; }
 .contact-list li { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 22px; }
 .contact-list li:last-child { margin-bottom: 0; }
@@ -223,7 +250,8 @@ img, svg { display: block; max-width: 100%; height: auto; }
     box-shadow: var(--mkg-shadow-md);
     max-height: 0; overflow: hidden; transition: max-height 240ms ease;
   }
-  .nav-menu.open { max-height: 420px; }
+  .nav-menu.open { max-height: 480px; }
+  .of-row { grid-template-columns: 1fr; gap: 0; }
   .nav-menu li { border-top: 1px solid var(--mkg-divider); }
   .nav-menu li:first-child { border-top: none; }
   .nav-menu a { display: block; padding: 16px 28px; border-bottom: none; }
