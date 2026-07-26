@@ -184,6 +184,12 @@ img, svg { display: block; max-width: 100%; height: auto; }
   outline: 2px solid var(--mkg-gold); outline-offset: 0; border-color: var(--mkg-gold);
 }
 .of-field textarea { resize: vertical; }
+.of-unit { position: relative; display: block; }
+.of-unit input { padding-right: 76px; }
+.of-unit-tag {
+  position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+  font-size: 0.95rem; color: var(--mkg-neutral-600); pointer-events: none;
+}
 .of-actions { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; margin-top: 6px; }
 .of-mail { font-size: 0.95rem; }
 

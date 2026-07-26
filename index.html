@@ -190,7 +190,7 @@
           <h2>We feed the highlands, too.</h2>
           <p>
             In Sesotho, <em>fepa</em> means <em>to feed</em>. FEPA Highlands is our
-            feed programme for highland farmers, run from the MKG farm at
+            egg and feed programme for highland farmers, run from the MKG farm at
             Mokhotlong with <a href="https://4dcs.co.za" target="_blank" rel="noopener">4D Climate Solutions</a>
             and supplied at factory price by iTau Animal Feeds.
           </p>
@@ -285,7 +285,10 @@
             </label>
             <label class="of-field of-qty">
               <span>How many</span>
-              <input type="text" name="qty" placeholder="e.g. 4 trays or 10 bags" required>
+              <span class="of-unit">
+                <input type="number" name="qty" min="1" step="1" placeholder="e.g. 4" required>
+                <span class="of-unit-tag" id="qty-unit">trays</span>
+              </span>
             </label>
           </div>
           <label class="of-field">
@@ -407,13 +410,19 @@
     document.getElementById('year').textContent = new Date().getFullYear();
     // Online order form → opens WhatsApp (or email) with the order pre-written
     const orderForm = document.getElementById('order-form');
+    const itemSelect = orderForm.querySelector('select[name=item]');
+    const qtyUnit = document.getElementById('qty-unit');
+    const orderUnit = () => itemSelect.value.startsWith('Eggs') ? 'trays' : 'bags';
+    const updateUnit = () => { qtyUnit.textContent = orderUnit(); };
+    itemSelect.addEventListener('change', updateUnit);
+    updateUnit();
     const orderText = () => {
       const f = new FormData(orderForm);
       return [
         'Lumela MKG! New order from mkgeggs.com',
         'Name: ' + f.get('name'),
         'Phone: ' + f.get('phone'),
-        'Order: ' + f.get('item') + ' — ' + f.get('qty'),
+        'Order: ' + f.get('item') + ' — ' + f.get('qty') + ' ' + orderUnit(),
         f.get('note') ? 'Note: ' + f.get('note') : ''
       ].filter(Boolean).join('\n');
     };
